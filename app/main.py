@@ -78,6 +78,15 @@ def reset(
     return JSONResponse({"status": "reset"})
 
 
+@app.get("/tenant-info")
+def tenant_info(tenant: str):
+    """Публичная информация о тенанте для виджета (название для шапки чата)."""
+    t = config.get_tenant(tenant)
+    if t is None:
+        raise HTTPException(status_code=404, detail="Unknown tenant")
+    return {"name": t.name, "city": t.city, "currency": t.currency}
+
+
 @app.get("/widget.js")
 def widget_js():
     path = WIDGET_DIR / "widget.js"

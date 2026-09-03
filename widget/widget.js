@@ -20,7 +20,10 @@
   if (!API && script && script.src) {
     try { API = new URL(script.src).origin; } catch (e) { API = ""; }
   }
-  var TITLE = (script && script.getAttribute("data-title")) || "AI Agent";
+  // Если data-title не задан — покажем название агентства (берём по tenant).
+  // На демо-странице data-title="AI Agent" задан явно и перекрывает это.
+  var titleAttr = script && script.getAttribute("data-title");
+  var TITLE = titleAttr || "AI Agent";
   var COLOR = (script && script.getAttribute("data-color")) || "#2563eb";
 
   var sessionId =
@@ -68,6 +71,15 @@
   var sendBtn = panel.querySelector(".rea-foot button");
   var closeBtn = panel.querySelector(".rea-head button");
   var typing = panel.querySelector(".rea-typing");
+  var headTitle = panel.querySelector(".rea-head span");
+
+  // Нет явного data-title -> подставляем название компании из tenant.
+  if (!titleAttr && API) {
+    fetch(API + "/tenant-info?tenant=" + encodeURIComponent(TENANT))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d && d.name && headTitle) headTitle.textContent = d.name; })
+      .catch(function () {});
+  }
 
   btn.onclick = function () {
     panel.classList.toggle("open");
