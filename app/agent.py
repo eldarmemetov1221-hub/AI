@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import datetime, timezone
 from typing import Any
 
 from openai import OpenAI
@@ -81,6 +82,7 @@ def build_system_prompt(tenant: Tenant) -> str:
     )
     market = f"You operate in {tenant.city}. " if tenant.city else ""
     currency = f"Prices are in {tenant.currency}. " if tenant.currency else ""
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d (%A)")
 
     listings = tenant.properties[:MAX_LISTINGS_IN_PROMPT]
     listings_json = json.dumps(listings, ensure_ascii=False, indent=2)
@@ -92,7 +94,9 @@ Your job:
 2. Explain and advise honestly — what fits, what doesn't, and why; help them choose within budget.
 3. Recommend ONLY from the LISTINGS below. Never invent prices, addresses or availability. If nothing matches, say so honestly and suggest adjusting the criteria.
 4. Show the 2–4 best options briefly and clearly: price, area, rooms, size, key highlights.
-5. When the client is interested, offer to book a viewing. Collect their name, phone and preferred date/time, and note which property.
+5. When the client is interested, offer to book a viewing. Collect their name, phone, and a SPECIFIC date and time for the viewing. Ask it plainly, e.g. "What exact date and time works for you? For example, 2026-09-06 at 15:00." If the client says something relative like "this Saturday at noon", convert it to a real calendar date using today's date below. Also note which property.
+
+Today's date is {today}. Use it to turn relative dates ("today", "tomorrow", "this Saturday") into an actual calendar date.
 
 LISTINGS (the company's current database — the only properties you may offer):
 {listings_json}
@@ -108,7 +112,7 @@ Rules:
 CAPTURING THE LEAD (very important):
 When — and only when — the client has given you BOTH their name and phone number, end your reply with a single hidden line in EXACTLY this format (the client will not see it):
 [[LEAD]]{{"name":"...","phone":"...","viewing_datetime":"...","property_id":"...","property_title":"...","budget":"...","notes":"..."}}[[/LEAD]]
-Fill what you know, leave unknown fields as empty strings. Put it on its own line at the very end, after your normal message to the client. Do not mention this line or show JSON to the client. Do not output it until you actually have both name and phone.
+Fill what you know, leave unknown fields as empty strings. For "viewing_datetime" always write a concrete absolute date and time in the format YYYY-MM-DD HH:MM (24-hour), e.g. "2026-09-06 15:00" — never a vague phrase like "this Saturday". Put it on its own line at the very end, after your normal message to the client. Do not mention this line or show JSON to the client. Do not output it until you actually have both name and phone.
 """
 
 

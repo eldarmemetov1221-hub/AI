@@ -39,10 +39,15 @@ function doPost(e) {
       sheet.appendRow(HEADER);
     }
 
+    // Телефон — как ТЕКСТ (иначе "+..." Google принимает за формулу и пишет #ERROR).
+    sheet.getRange('C:C').setNumberFormat('@');
+    // Колонка "Записано" — как дата/время.
+    sheet.getRange('A:A').setNumberFormat('yyyy-mm-dd hh:mm');
+
     sheet.appendRow([
-      data.timestamp || new Date().toISOString(),
+      new Date(),                    // Записано (текущие дата и время)
       data.name || '',
-      data.phone || '',
+      data.phone || '',              // пишется как текст благодаря формату колонки
       data.viewing_datetime || '',
       data.property_title || '',
       data.property_id || '',
