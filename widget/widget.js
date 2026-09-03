@@ -14,7 +14,12 @@
 
   var script = document.currentScript;
   var TENANT = (script && script.getAttribute("data-tenant")) || "demo";
+  // Адрес сервера: берём из data-api, иначе — из адреса самого этого скрипта.
+  // Так клиенту достаточно вставить одну строку без data-api.
   var API = (script && script.getAttribute("data-api")) || "";
+  if (!API && script && script.src) {
+    try { API = new URL(script.src).origin; } catch (e) { API = ""; }
+  }
   var TITLE = (script && script.getAttribute("data-title")) || "Online Realtor";
   var COLOR = (script && script.getAttribute("data-color")) || "#2563eb";
 
