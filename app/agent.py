@@ -49,6 +49,20 @@ MAX_LISTINGS_IN_PROMPT = 60
 _LEAD_RE = re.compile(r"\[\[LEAD\]\](.*?)\[\[/LEAD\]\]", re.DOTALL)
 
 
+def _strip_markdown(text: str) -> str:
+    """Убирает markdown-разметку, чтобы в чате не было символов *, #, ` и _."""
+    # **жирный** / *курсив* -> обычный текст
+    text = re.sub(r"\*{1,3}(.+?)\*{1,3}", r"\1", text)
+    text = re.sub(r"`{1,3}(.+?)`{1,3}", r"\1", text)
+    # заголовки "### " и маркеры списка "* " / "- " в начале строк
+    text = re.sub(r"(?m)^\s{0,3}#{1,6}\s*", "", text)
+    text = re.sub(r"(?m)^(\s*)[*•]\s+", r"\1- ", text)
+    # одиночные оставшиеся * и обрамляющие _слово_
+    text = text.replace("*", "")
+    text = re.sub(r"(?<!\w)_(.+?)_(?!\w)", r"\1", text)
+    return text.strip()
+
+
 def build_system_prompt(tenant: Tenant) -> str:
     contacts = ""
     if tenant.contacts:
@@ -86,6 +100,7 @@ LISTINGS (the company's current database — the only properties you may offer):
 Rules:
 - {lang}
 - Tone: {tone}
+- Write plain text only. Do NOT use Markdown or any formatting symbols such as *, **, #, backticks or underscores. For lists use a simple dash "-" or numbers. Emojis are fine.
 - Keep replies short and to the point. Ask one or two questions at a time.
 - Never ask for or store extra personal data — only name, phone and viewing preferences.
 - Don't promise anything not in the listings, and don't give exact legal/tax advice — refer those to a human manager.{contacts}
@@ -150,6 +165,7 @@ def chat(tenant: Tenant, session_id: str, user_message: str) -> dict[str, Any]:
     history.append({"role": "assistant", "content": raw})
 
     reply, lead_saved = _extract_and_save_lead(tenant, session_id, raw)
+    reply = _strip_markdown(reply)
     if not reply:
         reply = "Sorry, could you say that again?"
 
