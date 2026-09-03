@@ -26,20 +26,6 @@
   var sessionId =
     "s_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 
-  // Приветствие на языке посетителя (по языку браузера). Дальше агент сам
-  // отвечает на том языке, на котором пишет клиент.
-  var LANG = (navigator.language || "en").slice(0, 2).toLowerCase();
-  var GREETINGS = {
-    en: "Hi there! 👋 I can help you find a home within your budget. Are you looking to buy or to rent?",
-    es: "¡Hola! 👋 Puedo ayudarte a encontrar una vivienda según tu presupuesto. ¿Buscas comprar o alquilar?",
-    pt: "Olá! 👋 Posso ajudar a encontrar um imóvel dentro do seu orçamento. Procura comprar ou alugar?",
-    ru: "Здравствуйте! 👋 Помогу подобрать жильё под ваш бюджет. Вы ищете покупку или аренду?",
-    de: "Hallo! 👋 Ich helfe Ihnen, eine Immobilie in Ihrem Budget zu finden. Möchten Sie kaufen oder mieten?",
-    fr: "Bonjour ! 👋 Je peux vous aider à trouver un logement selon votre budget. Souhaitez-vous acheter ou louer ?",
-    it: "Ciao! 👋 Posso aiutarti a trovare casa nel tuo budget. Vuoi comprare o affittare?"
-  };
-  var GREETING = GREETINGS[LANG] || GREETINGS.en;
-
   // --- Стили ---
   var css = [
     ".rea-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;",
@@ -82,17 +68,10 @@
   var sendBtn = panel.querySelector(".rea-foot button");
   var closeBtn = panel.querySelector(".rea-head button");
   var typing = panel.querySelector(".rea-typing");
-  var greeted = false;
 
   btn.onclick = function () {
     panel.classList.toggle("open");
-    if (panel.classList.contains("open")) {
-      input.focus();
-      if (!greeted) {
-        greeted = true;
-        addMsg("bot", GREETING);
-      }
-    }
+    if (panel.classList.contains("open")) input.focus();
   };
   closeBtn.onclick = function () { panel.classList.remove("open"); };
   sendBtn.onclick = send;
