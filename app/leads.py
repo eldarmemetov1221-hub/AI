@@ -43,7 +43,8 @@ def _save_local(lead: dict[str, Any]) -> None:
 
 def _save_webhook(url: str, lead: dict[str, Any]) -> bool:
     try:
-        resp = httpx.post(url, json=lead, timeout=10.0)
+        # follow_redirects — Google Apps Script и n8n часто отвечают 302-переадресацией.
+        resp = httpx.post(url, json=lead, timeout=15.0, follow_redirects=True)
         resp.raise_for_status()
         return True
     except Exception as exc:  # noqa: BLE001 — приёмник не должен ронять ответ клиенту
