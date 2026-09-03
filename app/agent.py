@@ -56,9 +56,11 @@ def build_system_prompt(tenant: Tenant) -> str:
             tenant.contacts, ensure_ascii=False
         )
     lang = (
-        "Reply in the client's own language (auto-detect it from their messages)."
+        "Always reply in the SAME language the client writes in — detect it from "
+        "their most recent message and match it exactly. If the client writes in "
+        "English, reply in English. Never switch to another language on your own."
         if tenant.language == "auto"
-        else f"Reply in this language: {tenant.language}."
+        else f"Always reply in this language: {tenant.language}."
     )
     tone = tenant.tone or (
         "Friendly, professional, never pushy. Talk like a real experienced local realtor."
