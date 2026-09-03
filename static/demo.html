@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Demo Estate — ИИ-риелтор</title>
+  <title>Miami Sunrise Realty — AI Agent</title>
   <style>
     body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111;background:#f3f4f6}
     .hero{max-width:760px;margin:0 auto;padding:80px 24px}
@@ -15,17 +15,20 @@
 </head>
 <body>
   <div class="hero">
-    <h1>Demo Estate</h1>
-    <p>Демо-страница компании недвижимости. В правом нижнем углу — ИИ-риелтор,
-       встроенный одной строкой <code>&lt;script&gt;</code>. Нажмите 💬 и напишите,
-       например: «ищу 2-комнатную до 45 млн в Медеуском».</p>
+    <h1>Miami Sunrise Realty</h1>
+    <p>Demo page for a real estate company. In the bottom-right corner is the AI
+       agent, embedded with a single <code>&lt;script&gt;</code> line. Click 💬 and try,
+       for example: “Looking for a 2-bed condo under $650k in Brickell”.</p>
     <div class="card">
-      <strong>Как встроить на свой сайт:</strong>
+      <strong>How to embed on your own site:</strong>
       <pre><code>&lt;script src="/widget.js" data-tenant="demo" data-api=""&gt;&lt;/script&gt;</code></pre>
+      <p style="margin:12px 0 0;font-size:14px;color:#6b7280">Each company gets its own
+      <code>data-tenant</code> — its own city, currency, language and listings.
+      A second example tenant <code>berlin</code> (EUR, German) ships in the repo.</p>
     </div>
   </div>
 
-  <!-- data-api пустой => тот же origin, что и страница -->
-  <script src="/widget.js" data-tenant="demo" data-api="" data-title="Demo Estate — риелтор"></script>
+  <!-- data-api empty => same origin as the page -->
+  <script src="/widget.js" data-tenant="demo" data-api="" data-title="Miami Sunrise Realty"></script>
 </body>
 </html>

@@ -1,12 +1,14 @@
 {
-  "name": "Demo Estate",
+  "name": "Miami Sunrise Realty",
   "api_key": "",
+  "city": "Miami, Florida, USA",
+  "currency": "USD",
   "language": "auto",
-  "tone": "Дружелюбный и внимательный, помогает без давления, говорит просто.",
+  "tone": "Friendly, warm and helpful, no pressure, speaks simply.",
   "contacts": {
-    "phone": "+7 700 000 00 00",
-    "office": "г. Алматы, пр. Достык 1",
-    "hours": "Пн–Сб 9:00–19:00"
+    "phone": "+1 (305) 000-0000",
+    "office": "123 Ocean Drive, Miami Beach, FL",
+    "hours": "Mon–Sat 9:00–19:00"
   },
   "google_sheet_id": "",
   "lead_webhook_url": ""

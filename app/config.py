@@ -2,7 +2,11 @@
 
 Каждая компания (агентство недвижимости) — это отдельный "тенант": своя папка
 в TENANTS_DIR со своим config.json, базой объектов properties.json и API-ключом.
-Так один сервер обслуживает много компаний, а мы продаём им доступ к агенту.
+Так один сервер обслуживает много компаний в разных городах: у каждой свой
+город, валюта, язык и база — агент подстраивается автоматически.
+
+ИИ работает через OpenRouter (OpenAI-совместимый API). Тот же код подходит и
+для OpenAI/ChatGPT — достаточно поменять LLM_BASE_URL и LLM_API_KEY.
 """
 from __future__ import annotations
 
@@ -16,8 +20,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# --- Глобальные настройки сервера ---
-MODEL_ID = os.getenv("MODEL_ID", "claude-sonnet-5")
+# --- Настройки ИИ (OpenRouter по умолчанию; можно указать OpenAI) ---
+LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://openrouter.ai/api/v1")
+LLM_API_KEY = os.getenv("LLM_API_KEY", "")
+MODEL_ID = os.getenv("MODEL_ID", "meta-llama/llama-3.3-70b-instruct:free")
+# Необязательные заголовки для рейтинга приложения в OpenRouter
+APP_URL = os.getenv("APP_URL", "")
+APP_NAME = os.getenv("APP_NAME", "Real Estate AI Agent")
+
+# --- Настройки сервера ---
 HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", "8000"))
 ALLOWED_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
@@ -33,6 +44,8 @@ class Tenant:
     tenant_id: str
     name: str
     api_key: str
+    city: str = ""          # город/рынок работы компании
+    currency: str = "USD"   # валюта цен в базе
     language: str = "auto"
     tone: str = ""
     contacts: dict = field(default_factory=dict)
@@ -60,6 +73,8 @@ def _load_tenant(folder: Path) -> Tenant | None:
         tenant_id=folder.name,
         name=config.get("name", folder.name),
         api_key=config.get("api_key", ""),
+        city=config.get("city", ""),
+        currency=config.get("currency", "USD"),
         language=config.get("language", "auto"),
         tone=config.get("tone", ""),
         contacts=config.get("contacts", {}),

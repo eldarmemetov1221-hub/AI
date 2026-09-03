@@ -1,26 +1,41 @@
-"""ИИ-агент-риелтор поверх Claude API.
+"""ИИ-агент-риелтор поверх OpenRouter (OpenAI-совместимый API).
 
-Ведёт диалог с клиентом, объясняет и советует, подбирает объекты под бюджет
+Работает с бесплатными/платными моделями OpenRouter, а также с OpenAI/ChatGPT —
+провайдер задаётся в config (LLM_BASE_URL, LLM_API_KEY, MODEL_ID).
+
+Ведёт диалог, объясняет и советует, подбирает объекты под бюджет
 (инструмент search_properties), а когда клиент готов на просмотр — собирает
 контакты и сохраняет лид (инструмент save_lead).
 
-История диалога хранится в памяти по session_id. Для одного сервера этого
-достаточно; для нескольких воркеров подключите общее хранилище (Redis и т.п.)
-в MEMORY ниже.
+Работает на рынки Европы и США: у каждой компании свой город и валюта — агент
+подстраивается под них через системный промпт и базу объектов тенанта.
+
+История диалога хранится в памяти по session_id. Для нескольких воркеров
+подключите общее хранилище (Redis и т.п.) вместо словаря MEMORY.
 """
 from __future__ import annotations
 
 import json
 from typing import Any
 
-import anthropic
+from openai import OpenAI
 
 from . import config, leads, properties
 from .config import Tenant
 
-client = anthropic.Anthropic()
+_extra_headers = {}
+if config.APP_URL:
+    _extra_headers["HTTP-Referer"] = config.APP_URL
+if config.APP_NAME:
+    _extra_headers["X-Title"] = config.APP_NAME
 
-# session_id -> список сообщений в формате Claude API
+client = OpenAI(
+    base_url=config.LLM_BASE_URL,
+    api_key=config.LLM_API_KEY or "missing-key",
+    default_headers=_extra_headers or None,
+)
+
+# session_id -> список сообщений в формате OpenAI chat
 MEMORY: dict[str, list[dict[str, Any]]] = {}
 
 MAX_TOOL_ITERATIONS = 6  # защита от зацикливания
@@ -28,58 +43,62 @@ MAX_TOOL_ITERATIONS = 6  # защита от зацикливания
 
 TOOLS = [
     {
-        "name": "search_properties",
-        "description": (
-            "Подобрать объекты недвижимости из базы компании по критериям клиента. "
-            "Используй, как только понял бюджет и хотя бы примерные пожелания. "
-            "Возвращает список подходящих объектов. Никогда не придумывай объекты — "
-            "показывай клиенту только то, что вернул этот инструмент."
-        ),
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "deal_type": {
-                    "type": "string",
-                    "enum": ["sale", "rent"],
-                    "description": "Тип сделки: продажа (sale) или аренда (rent).",
+        "type": "function",
+        "function": {
+            "name": "search_properties",
+            "description": (
+                "Find real estate listings from the company's database by the client's "
+                "criteria. Use it as soon as you know the budget and rough preferences. "
+                "Returns matching listings. Never invent listings — only show what this "
+                "tool returns."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "deal_type": {
+                        "type": "string",
+                        "enum": ["sale", "rent"],
+                        "description": "Deal type: sale or rent.",
+                    },
+                    "property_type": {
+                        "type": "string",
+                        "description": "Property type, e.g. apartment, house, studio, condo, commercial.",
+                    },
+                    "district": {"type": "string", "description": "Neighborhood, district or city."},
+                    "min_price": {"type": "number", "description": "Minimum price."},
+                    "max_price": {"type": "number", "description": "Maximum price (client's budget)."},
+                    "min_rooms": {"type": "integer", "description": "Minimum number of rooms/bedrooms."},
+                    "max_rooms": {"type": "integer", "description": "Maximum number of rooms/bedrooms."},
+                    "min_area": {"type": "number", "description": "Minimum area."},
                 },
-                "property_type": {
-                    "type": "string",
-                    "description": "Тип объекта, напр. apartment, house, studio, commercial.",
-                },
-                "district": {"type": "string", "description": "Район или город."},
-                "min_price": {"type": "number", "description": "Минимальная цена."},
-                "max_price": {"type": "number", "description": "Максимальная цена (бюджет клиента)."},
-                "min_rooms": {"type": "integer", "description": "Минимум комнат."},
-                "max_rooms": {"type": "integer", "description": "Максимум комнат."},
-                "min_area": {"type": "number", "description": "Минимальная площадь, м²."},
             },
-            "additionalProperties": False,
         },
     },
     {
-        "name": "save_lead",
-        "description": (
-            "Сохранить контактные данные клиента в конце разговора, когда он "
-            "согласен на просмотр или просит перезвонить. Вызывай ТОЛЬКО когда есть "
-            "как минимум имя и телефон. Перед вызовом убедись, что клиент сам их назвал."
-        ),
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "name": {"type": "string", "description": "Имя клиента."},
-                "phone": {"type": "string", "description": "Телефон клиента."},
-                "viewing_datetime": {
-                    "type": "string",
-                    "description": "Когда клиенту удобно смотреть объект (как он сказал).",
+        "type": "function",
+        "function": {
+            "name": "save_lead",
+            "description": (
+                "Save the client's contact details at the end of the conversation, when "
+                "they agree to a viewing or ask to be called back. Call ONLY when you have "
+                "at least a name and a phone number that the client provided themselves."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string", "description": "Client's name."},
+                    "phone": {"type": "string", "description": "Client's phone number."},
+                    "viewing_datetime": {
+                        "type": "string",
+                        "description": "When the client wants to view the property (as they said).",
+                    },
+                    "property_id": {"type": "string", "description": "ID of the listing from the database."},
+                    "property_title": {"type": "string", "description": "Listing title/address."},
+                    "budget": {"type": "string", "description": "Client's budget."},
+                    "notes": {"type": "string", "description": "Short summary of client's preferences."},
                 },
-                "property_id": {"type": "string", "description": "ID объекта из базы, который смотрит клиент."},
-                "property_title": {"type": "string", "description": "Название/адрес объекта."},
-                "budget": {"type": "string", "description": "Бюджет клиента."},
-                "notes": {"type": "string", "description": "Кратко: пожелания клиента."},
+                "required": ["name", "phone"],
             },
-            "required": ["name", "phone"],
-            "additionalProperties": False,
         },
     },
 ]
@@ -88,47 +107,50 @@ TOOLS = [
 def build_system_prompt(tenant: Tenant) -> str:
     contacts = ""
     if tenant.contacts:
-        contacts = "\nКонтакты компании (если клиент попросит): " + json.dumps(
+        contacts = "\nCompany contacts (share if the client asks): " + json.dumps(
             tenant.contacts, ensure_ascii=False
         )
     lang = (
-        "Отвечай на языке клиента (определяй автоматически по его сообщениям)."
+        "Reply in the client's own language (auto-detect it from their messages)."
         if tenant.language == "auto"
-        else f"Отвечай на языке: {tenant.language}."
+        else f"Reply in this language: {tenant.language}."
     )
     tone = tenant.tone or (
-        "Дружелюбный, профессиональный, без навязчивости. Говори как живой опытный риелтор."
+        "Friendly, professional, never pushy. Talk like a real experienced local realtor."
     )
-    return f"""Ты — ИИ-риелтор компании «{tenant.name}». Ты работаешь 24/7 и общаешься с клиентами вместо менеджера.
+    market = f"You operate in {tenant.city}. " if tenant.city else ""
+    currency = f"Prices are in {tenant.currency}. " if tenant.currency else ""
 
-Твои задачи:
-1. Тепло поприветствовать и выяснить потребность: покупка или аренда, тип жилья, район, бюджет, число комнат, для кого.
-2. Объяснять и советовать честно — что подойдёт, что нет и почему, помогать выбрать в рамках бюджета.
-3. Подбирать объекты ТОЛЬКО через инструмент search_properties. Не выдумывай цены, адреса и наличие. Если ничего не нашлось — честно скажи и предложи изменить критерии.
-4. Показывать 2–4 лучших варианта коротко и понятно: цена, район, комнаты, площадь, ключевые плюсы.
-5. Когда клиент заинтересован — предложить записать на просмотр. Собери имя, телефон и удобные дату/время, уточни какой объект. Затем ВЫЗОВИ save_lead. После успешного сохранения подтверди клиенту, что менеджер свяжется.
+    return f"""You are an AI real estate agent for "{tenant.name}". You work 24/7 and talk to clients instead of a human agent. {market}{currency}
 
-Правила:
+Your job:
+1. Greet warmly and find out the need: buy or rent, property type, area, budget, number of rooms, who it's for.
+2. Explain and advise honestly — what fits, what doesn't, and why; help them choose within budget.
+3. Find listings ONLY via the search_properties tool. Never invent prices, addresses or availability. If nothing matches, say so honestly and suggest adjusting the criteria.
+4. Show the 2–4 best options briefly and clearly: price, area, rooms, size, key highlights.
+5. When the client is interested, offer to book a viewing. Collect name, phone and preferred date/time, and note which property. Then CALL save_lead. After it succeeds, confirm that a manager will get in touch.
+
+Rules:
 - {lang}
-- Тон: {tone}
-- Отвечай кратко и по делу, не перегружай текстом. Задавай по одному-двум вопросам за раз.
-- Никогда не проси и не сохраняй лишние персональные данные — только имя, телефон и пожелания по просмотру.
-- Не обещай того, чего нет в базе, и не называй точную юридическую/налоговую информацию — по таким вопросам направляй к менеджеру.{contacts}
+- Tone: {tone}
+- Keep replies short and to the point. Ask one or two questions at a time.
+- Never ask for or store extra personal data — only name, phone and viewing preferences.
+- Don't promise anything not in the database, and don't give exact legal/tax advice — refer those to a human manager.{contacts}
 """
 
 
-def _run_tool(tenant: Tenant, session_id: str, name: str, tool_input: dict) -> Any:
+def _run_tool(tenant: Tenant, session_id: str, name: str, args: dict) -> Any:
     if name == "search_properties":
-        found = properties.search_properties(tenant.properties, **tool_input)
+        found = properties.search_properties(tenant.properties, **args)
         if not found:
-            return {"count": 0, "properties": [], "message": "Нет объектов под эти критерии."}
-        return {"count": len(found), "properties": found}
+            return {"count": 0, "properties": [], "message": "No listings match these criteria."}
+        return {"count": len(found), "currency": tenant.currency, "properties": found}
 
     if name == "save_lead":
-        result = leads.save_lead(tenant, session_id=session_id, **tool_input)
+        result = leads.save_lead(tenant, session_id=session_id, **args)
         return {"saved": True, "delivery": result["delivery"]}
 
-    return {"error": f"Неизвестный инструмент: {name}"}
+    return {"error": f"Unknown tool: {name}"}
 
 
 def chat(tenant: Tenant, session_id: str, user_message: str) -> dict[str, Any]:
@@ -136,46 +158,65 @@ def chat(tenant: Tenant, session_id: str, user_message: str) -> dict[str, Any]:
 
     Возвращает: {"reply": str, "lead_saved": bool}
     """
-    history = MEMORY.setdefault(session_id, [])
-    history.append({"role": "user", "content": user_message})
+    history = MEMORY.get(session_id)
+    if history is None:
+        # Системный промпт кладём один раз в начало истории диалога.
+        history = [{"role": "system", "content": build_system_prompt(tenant)}]
+        MEMORY[session_id] = history
 
-    system = build_system_prompt(tenant)
+    history.append({"role": "user", "content": user_message})
     lead_saved = False
+    message = None
 
     for _ in range(MAX_TOOL_ITERATIONS):
-        response = client.messages.create(
+        completion = client.chat.completions.create(
             model=config.MODEL_ID,
-            max_tokens=2048,
-            system=system,
-            tools=TOOLS,
             messages=history,
+            tools=TOOLS,
+            max_tokens=1024,
         )
-        history.append({"role": "assistant", "content": response.content})
+        message = completion.choices[0].message
 
-        if response.stop_reason != "tool_use":
+        tool_calls = message.tool_calls or []
+        # Сохраняем ход ассистента (с возможными вызовами инструментов).
+        history.append(
+            {
+                "role": "assistant",
+                "content": message.content or "",
+                "tool_calls": [
+                    {
+                        "id": tc.id,
+                        "type": "function",
+                        "function": {"name": tc.function.name, "arguments": tc.function.arguments},
+                    }
+                    for tc in tool_calls
+                ]
+                or None,
+            }
+        )
+
+        if not tool_calls:
             break
 
-        tool_results = []
-        for block in response.content:
-            if block.type != "tool_use":
-                continue
-            if block.name == "save_lead":
+        for tc in tool_calls:
+            try:
+                args = json.loads(tc.function.arguments or "{}")
+            except json.JSONDecodeError:
+                args = {}
+            if tc.function.name == "save_lead":
                 lead_saved = True
-            output = _run_tool(tenant, session_id, block.name, block.input)
-            tool_results.append(
+            output = _run_tool(tenant, session_id, tc.function.name, args)
+            history.append(
                 {
-                    "type": "tool_result",
-                    "tool_use_id": block.id,
+                    "role": "tool",
+                    "tool_call_id": tc.id,
                     "content": json.dumps(output, ensure_ascii=False),
                 }
             )
-        history.append({"role": "user", "content": tool_results})
 
-    reply = " ".join(
-        b.text for b in response.content if getattr(b, "type", None) == "text"
-    ).strip()
+    reply = (message.content or "").strip() if message else ""
     if not reply:
-        reply = "Извините, повторите, пожалуйста — я не расслышал."
+        reply = "Sorry, could you say that again?"
 
     return {"reply": reply, "lead_saved": lead_saved}
 

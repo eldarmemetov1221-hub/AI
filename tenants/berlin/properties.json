@@ -1,0 +1,67 @@
+[
+  {
+    "id": "BER-101",
+    "title": "2-Zimmer-Wohnung, Prenzlauer Berg",
+    "deal_type": "sale",
+    "type": "apartment",
+    "district": "Prenzlauer Berg, Berlin",
+    "price": 480000,
+    "currency": "EUR",
+    "rooms": 2,
+    "area": 72,
+    "floor": 3,
+    "highlights": ["Altbau", "Balkon", "ruhige Lage", "nah am Park"]
+  },
+  {
+    "id": "BER-102",
+    "title": "Studio in Mitte",
+    "deal_type": "sale",
+    "type": "studio",
+    "district": "Mitte, Berlin",
+    "price": 265000,
+    "currency": "EUR",
+    "rooms": 1,
+    "area": 38,
+    "floor": 4,
+    "highlights": ["zentral", "saniert", "U-Bahn 2 Min"]
+  },
+  {
+    "id": "BER-201",
+    "title": "3-Zimmer-Wohnung für Familien",
+    "deal_type": "sale",
+    "type": "apartment",
+    "district": "Charlottenburg, Berlin",
+    "price": 640000,
+    "currency": "EUR",
+    "rooms": 3,
+    "area": 105,
+    "floor": 2,
+    "highlights": ["zwei Balkone", "Schule & Kita in der Nähe", "Keller"]
+  },
+  {
+    "id": "BER-301",
+    "title": "2-Zimmer-Wohnung zur Miete",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "Kreuzberg, Berlin",
+    "price": 1650,
+    "currency": "EUR",
+    "rooms": 2,
+    "area": 65,
+    "floor": 5,
+    "highlights": ["möbliert", "Einbauküche", "Haustiere erlaubt"]
+  },
+  {
+    "id": "BER-302",
+    "title": "Studio zur Miete, Friedrichshain",
+    "deal_type": "rent",
+    "type": "studio",
+    "district": "Friedrichshain, Berlin",
+    "price": 1100,
+    "currency": "EUR",
+    "rooms": 1,
+    "area": 36,
+    "floor": 3,
+    "highlights": ["Stadtzentrum", "schnelles Internet", "Fahrradkeller"]
+  }
+]

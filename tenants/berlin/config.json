@@ -1,0 +1,15 @@
+{
+  "name": "Berlin Wohnen GmbH",
+  "api_key": "",
+  "city": "Berlin, Germany",
+  "currency": "EUR",
+  "language": "auto",
+  "tone": "Freundlich, professionell und hilfsbereit, ohne Druck.",
+  "contacts": {
+    "phone": "+49 30 0000000",
+    "office": "Alexanderplatz 1, 10178 Berlin",
+    "hours": "Mo–Sa 9:00–19:00"
+  },
+  "google_sheet_id": "",
+  "lead_webhook_url": ""
+}

@@ -15,7 +15,7 @@
   var script = document.currentScript;
   var TENANT = (script && script.getAttribute("data-tenant")) || "demo";
   var API = (script && script.getAttribute("data-api")) || "";
-  var TITLE = (script && script.getAttribute("data-title")) || "Онлайн-риелтор";
+  var TITLE = (script && script.getAttribute("data-title")) || "Online Realtor";
   var COLOR = (script && script.getAttribute("data-color")) || "#2563eb";
 
   var sessionId =
@@ -51,10 +51,10 @@
   var btn = el("button", "rea-btn", "💬");
   var panel = el("div", "rea-panel");
   panel.innerHTML =
-    '<div class="rea-head"><span>' + esc(TITLE) + '</span><button aria-label="Закрыть">×</button></div>' +
+    '<div class="rea-head"><span>' + esc(TITLE) + '</span><button aria-label="Close">×</button></div>' +
     '<div class="rea-msgs"></div>' +
-    '<div class="rea-typing" style="display:none">печатает…</div>' +
-    '<div class="rea-foot"><input type="text" placeholder="Напишите сообщение…"/><button>➤</button></div>';
+    '<div class="rea-typing" style="display:none">typing…</div>' +
+    '<div class="rea-foot"><input type="text" placeholder="Type a message…"/><button>➤</button></div>';
   document.body.appendChild(btn);
   document.body.appendChild(panel);
 
@@ -71,7 +71,7 @@
       input.focus();
       if (!greeted) {
         greeted = true;
-        addMsg("bot", "Здравствуйте! 👋 Помогу подобрать квартиру или дом под ваш бюджет. Что вы ищете — покупка или аренда?");
+        addMsg("bot", "Hi there! 👋 I can help you find a home within your budget. Are you looking to buy or to rent?");
       }
     }
   };
@@ -102,7 +102,7 @@
         addMsg("bot", data.reply);
       })
       .catch(function () {
-        addMsg("bot", "Извините, техническая заминка. Попробуйте ещё раз чуть позже.");
+        addMsg("bot", "Sorry, a technical glitch. Please try again in a moment.");
       })
       .finally(function () {
         typing.style.display = "none";
