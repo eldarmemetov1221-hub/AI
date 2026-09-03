@@ -20,7 +20,7 @@
   if (!API && script && script.src) {
     try { API = new URL(script.src).origin; } catch (e) { API = ""; }
   }
-  var TITLE = (script && script.getAttribute("data-title")) || "Online Realtor";
+  var TITLE = (script && script.getAttribute("data-title")) || "AI Agent";
   var COLOR = (script && script.getAttribute("data-color")) || "#2563eb";
 
   var sessionId =

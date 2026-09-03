@@ -126,7 +126,7 @@ def demo(tenant: str = "demo"):
      </ul>
    </div>
  </div>
- <script src="/widget.js" data-tenant="{tid}" data-title="{name}"></script>
+ <script src="/widget.js" data-tenant="{tid}" data-title="AI Agent"></script>
 </body></html>""")
 
 
