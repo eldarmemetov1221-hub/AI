@@ -109,8 +109,10 @@ def save_lead(
     _save_local(lead)
     delivery["local"] = True
 
-    if tenant.lead_webhook_url:
-        delivery["webhook"] = _save_webhook(tenant.lead_webhook_url, lead)
+    # У тенанта своя ссылка приоритетнее; иначе — глобальная из переменной окружения.
+    webhook_url = tenant.lead_webhook_url or config.LEAD_WEBHOOK_URL
+    if webhook_url:
+        delivery["webhook"] = _save_webhook(webhook_url, lead)
 
     if tenant.google_sheet_id:
         delivery["google_sheet"] = _save_google_sheet(tenant.google_sheet_id, lead)

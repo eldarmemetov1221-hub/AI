@@ -33,6 +33,9 @@ HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", "8000"))
 ALLOWED_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 GOOGLE_SERVICE_ACCOUNT_FILE = os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE", "").strip()
+# Глобальная ссылка для заявок (Google Apps Script /exec или n8n). Применяется,
+# если у тенанта в config.json поле lead_webhook_url не задано.
+LEAD_WEBHOOK_URL = os.getenv("LEAD_WEBHOOK_URL", "").strip()
 TENANTS_DIR = Path(os.getenv("TENANTS_DIR", "tenants"))
 DATA_DIR = Path("data")
 
