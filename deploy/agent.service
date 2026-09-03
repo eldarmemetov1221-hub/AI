@@ -1,0 +1,13 @@
+[Unit]
+Description=Real Estate AI Agent
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/agent
+EnvironmentFile=/opt/agent/agent.env
+ExecStart=/opt/agent/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
