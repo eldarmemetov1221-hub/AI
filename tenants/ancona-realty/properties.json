@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ANC-A1", "title": "2-bed oceanfront condo, Miami Beach", "deal_type": "sale", "type": "condo",
+    "address": "5959 Collins Ave, Miami Beach, FL 33140", "district": "Mid-Beach, Miami Beach",
+    "price": 850000, "currency": "USD", "rooms": 2, "bedrooms": 2, "bathrooms": 2, "area_sqft": 1150, "floor": 14,
+    "transit": "beachfront; 10 min to South Beach", "parking": "valet + 1 space",
+    "amenities": ["direct ocean view", "beach access", "pool", "gym", "24/7 security"], "hoa_monthly": 1100,
+    "description": "Bright oceanfront condo on Collins Avenue with direct beach access and ocean views."
+  },
+  {
+    "id": "ANC-A2", "title": "Studio in South Beach", "deal_type": "sale", "type": "studio",
+    "address": "1000 West Ave, Miami Beach, FL 33139", "district": "South Beach, Miami Beach",
+    "price": 320000, "currency": "USD", "rooms": 1, "bedrooms": 0, "bathrooms": 1, "area_sqft": 500, "floor": 6,
+    "transit": "walk to Lincoln Road & the beach", "parking": "assigned space",
+    "amenities": ["bay view", "pool", "walk to Lincoln Road", "doorman"], "hoa_monthly": 480,
+    "description": "Stylish studio in South Beach, minutes from Lincoln Road and the ocean."
+  },
+  {
+    "id": "ANC-A3", "title": "2-bed condo for rent, Bal Harbour", "deal_type": "rent", "type": "condo",
+    "address": "10201 Collins Ave, Bal Harbour, FL 33154", "district": "Bal Harbour, Miami Beach",
+    "price_per_month": 4800, "price": 4800, "currency": "USD", "rooms": 2, "bedrooms": 2, "bathrooms": 2, "area_sqft": 1200, "floor": 20,
+    "transit": "near Bal Harbour Shops; beachfront", "parking": "valet included",
+    "amenities": ["furnished", "ocean view", "spa", "near Bal Harbour Shops", "pet friendly"], "min_lease_months": 6,
+    "description": "Luxury furnished rental in Bal Harbour, steps from designer shopping and the beach."
+  },
+  {
+    "id": "ANC-H1", "title": "4-bed waterfront house, Miami Beach", "deal_type": "sale", "type": "house",
+    "address": "4400 Pine Tree Dr, Miami Beach, FL 33140", "district": "Pine Tree, Miami Beach",
+    "price": 2950000, "currency": "USD", "rooms": 4, "bedrooms": 4, "bathrooms": 4, "area_sqft": 3400, "lot_sqft": 12000, "year_built": 2014,
+    "parking": "2-car garage", "amenities": ["private dock", "infinity pool", "waterfront", "chef's kitchen"],
+    "description": "Elegant waterfront home on prestigious Pine Tree Drive with a private dock and pool."
+  },
+  {
+    "id": "ANC-H2", "title": "3-bed villa, Coral Gables", "deal_type": "sale", "type": "house",
+    "address": "1200 Milan Ave, Coral Gables, FL 33134", "district": "Coral Gables, Miami",
+    "price": 1350000, "currency": "USD", "rooms": 3, "bedrooms": 3, "bathrooms": 3, "area_sqft": 2400, "lot_sqft": 9000, "year_built": 2010,
+    "parking": "2-car garage", "amenities": ["pool", "Mediterranean style", "A-rated schools", "impact windows"],
+    "description": "Mediterranean-style villa in Coral Gables with a private pool and lush garden."
+  },
+  {
+    "id": "ANC-H3", "title": "4-bed house for rent, Miami Beach", "deal_type": "rent", "type": "house",
+    "address": "300 W San Marino Dr, Miami Beach, FL 33139", "district": "San Marino Island, Miami Beach",
+    "price_per_month": 8500, "price": 8500, "currency": "USD", "rooms": 4, "bedrooms": 4, "bathrooms": 3, "area_sqft": 2800, "lot_sqft": 9500, "year_built": 2012,
+    "parking": "2-car garage", "amenities": ["private pool", "waterfront", "furnished option", "gated island"], "min_lease_months": 12,
+    "description": "Bright island home on San Marino with a pool, ideal for families relocating to Miami."
+  }
+]

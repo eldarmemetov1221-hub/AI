@@ -1,0 +1,47 @@
+[
+  {
+    "id": "AVW-A1", "title": "3-bed condo, Doral", "deal_type": "sale", "type": "condo",
+    "address": "5300 NW 87th Ave, Doral, FL 33178", "district": "Doral, Miami",
+    "price": 640000, "currency": "USD", "rooms": 3, "bedrooms": 3, "bathrooms": 2, "area_sqft": 1400, "floor": 6,
+    "transit": "near Downtown Doral & CityPlace", "parking": "2 assigned spaces",
+    "amenities": ["pool", "gym", "near CityPlace Doral", "family friendly"], "hoa_monthly": 560,
+    "description": "Spacious family condo in Downtown Doral, walking distance to CityPlace shops and dining."
+  },
+  {
+    "id": "AVW-A2", "title": "2-bed condo, Brickell", "deal_type": "sale", "type": "condo",
+    "address": "444 Brickell Ave, Brickell, Miami, FL 33131", "district": "Brickell, Miami",
+    "price": 710000, "currency": "USD", "rooms": 2, "bedrooms": 2, "bathrooms": 2, "area_sqft": 1050, "floor": 22,
+    "transit": "walk to Brickell City Centre & Metromover", "parking": "1 space",
+    "amenities": ["bay view", "pool", "gym", "concierge"], "hoa_monthly": 820,
+    "description": "Bright Brickell condo with bay views on iconic Brickell Avenue."
+  },
+  {
+    "id": "AVW-A3", "title": "2-bed apartment for rent, Weston", "deal_type": "rent", "type": "apartment",
+    "address": "1600 Town Center Blvd, Weston, FL 33326", "district": "Weston, Broward",
+    "price_per_month": 2700, "price": 2700, "currency": "USD", "rooms": 2, "bedrooms": 2, "bathrooms": 2, "area_sqft": 1100, "floor": 3,
+    "transit": "near Weston Town Center; top-rated schools", "parking": "2 spaces",
+    "amenities": ["furnished option", "pool", "pet friendly", "gated"], "min_lease_months": 12,
+    "description": "Family-friendly rental in Weston, near top schools and Weston Town Center."
+  },
+  {
+    "id": "AVW-H1", "title": "4-bed house, Doral", "deal_type": "sale", "type": "house",
+    "address": "10900 NW 74th St, Doral, FL 33178", "district": "Doral, Miami",
+    "price": 1090000, "currency": "USD", "rooms": 4, "bedrooms": 4, "bathrooms": 3, "area_sqft": 2700, "lot_sqft": 7000, "year_built": 2014,
+    "parking": "2-car garage", "amenities": ["gated community", "pool", "clubhouse", "near golf"],
+    "description": "Modern family home in a gated Doral community with resort-style amenities."
+  },
+  {
+    "id": "AVW-H2", "title": "5-bed house with pool, Weston", "deal_type": "sale", "type": "house",
+    "address": "2500 Country Isles Rd, Weston, FL 33327", "district": "Weston, Broward",
+    "price": 1350000, "currency": "USD", "rooms": 5, "bedrooms": 5, "bathrooms": 4, "area_sqft": 3400, "lot_sqft": 11000, "year_built": 2008,
+    "parking": "3-car garage", "amenities": ["private pool", "lakefront", "top schools", "gated"],
+    "description": "Large lakefront family home in Weston with a private pool and A-rated schools nearby."
+  },
+  {
+    "id": "AVW-H3", "title": "3-bed townhouse for rent, Coral Gables", "deal_type": "rent", "type": "house",
+    "address": "3000 Ponce de Leon Blvd, Coral Gables, FL 33134", "district": "Coral Gables, Miami",
+    "price_per_month": 4300, "price": 4300, "currency": "USD", "rooms": 3, "bedrooms": 3, "bathrooms": 3, "area_sqft": 1900, "year_built": 2018,
+    "parking": "2 assigned spaces", "amenities": ["rooftop terrace", "smart home", "walk to Miracle Mile", "pet friendly"], "min_lease_months": 12,
+    "description": "Contemporary townhouse rental in Coral Gables, walking distance to Miracle Mile."
+  }
+]

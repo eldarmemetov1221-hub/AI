@@ -1,0 +1,47 @@
+[
+  {
+    "id": "MBG-A1", "title": "2-bed condo, Coral Gables", "deal_type": "sale", "type": "condo",
+    "address": "600 Biltmore Way, Coral Gables, FL 33134", "district": "Coral Gables, Miami",
+    "price": 560000, "currency": "USD", "rooms": 2, "bedrooms": 2, "bathrooms": 2, "area_sqft": 1100, "floor": 8,
+    "transit": "walk to Miracle Mile; 6 min to Douglas Rd Metrorail", "parking": "1 covered space",
+    "amenities": ["pool", "gym", "concierge", "walk to shops"], "hoa_monthly": 620,
+    "description": "Elegant condo steps from Miracle Mile in the heart of Coral Gables."
+  },
+  {
+    "id": "MBG-A2", "title": "1-bed condo, South Miami", "deal_type": "sale", "type": "condo",
+    "address": "5800 SW 74th St, South Miami, FL 33143", "district": "South Miami",
+    "price": 375000, "currency": "USD", "rooms": 1, "bedrooms": 1, "bathrooms": 1, "area_sqft": 700, "floor": 3,
+    "transit": "5 min to South Miami Metrorail; walk to Sunset Place", "parking": "1 space",
+    "amenities": ["renovated", "near shops & dining", "gym"], "hoa_monthly": 430,
+    "description": "Move-in-ready one-bedroom near Sunset Place shops and the Metrorail."
+  },
+  {
+    "id": "MBG-A3", "title": "3-bed apartment for rent, Kendall", "deal_type": "rent", "type": "apartment",
+    "address": "8950 SW 97th Ave, Kendall, Miami, FL 33176", "district": "Kendall, Miami",
+    "price_per_month": 2900, "price": 2900, "currency": "USD", "rooms": 3, "bedrooms": 3, "bathrooms": 2, "area_sqft": 1300, "floor": 2,
+    "transit": "near Dadeland Mall; bus routes nearby", "parking": "2 spaces",
+    "amenities": ["furnished option", "pool", "pet friendly", "playground"], "min_lease_months": 12,
+    "description": "Spacious family rental in Kendall near Dadeland Mall and good schools."
+  },
+  {
+    "id": "MBG-H1", "title": "4-bed house with pool, Coral Gables", "deal_type": "sale", "type": "house",
+    "address": "1500 Certosa Ave, Coral Gables, FL 33146", "district": "Coral Gables, Miami",
+    "price": 1550000, "currency": "USD", "rooms": 4, "bedrooms": 4, "bathrooms": 3, "area_sqft": 2800, "lot_sqft": 10500, "year_built": 2007,
+    "parking": "2-car garage", "amenities": ["private pool", "updated kitchen", "A-rated schools", "impact windows"],
+    "description": "Classic Coral Gables family home with a pool on a quiet, tree-lined street."
+  },
+  {
+    "id": "MBG-H2", "title": "5-bed villa, Doral", "deal_type": "sale", "type": "house",
+    "address": "11200 NW 82nd St, Doral, FL 33178", "district": "Doral, Miami",
+    "price": 1180000, "currency": "USD", "rooms": 5, "bedrooms": 5, "bathrooms": 4, "area_sqft": 3100, "lot_sqft": 7500, "year_built": 2015,
+    "parking": "2-car garage", "amenities": ["gated community", "clubhouse", "pool", "near golf"],
+    "description": "Modern villa in a gated Doral community, popular with families and investors."
+  },
+  {
+    "id": "MBG-H3", "title": "3-bed house for rent, South Miami", "deal_type": "rent", "type": "house",
+    "address": "6200 SW 60th St, South Miami, FL 33143", "district": "South Miami",
+    "price_per_month": 4500, "price": 4500, "currency": "USD", "rooms": 3, "bedrooms": 3, "bathrooms": 2, "area_sqft": 1700, "lot_sqft": 7000, "year_built": 2003,
+    "parking": "carport + driveway", "amenities": ["fenced yard", "pet friendly", "updated kitchen"], "min_lease_months": 12,
+    "description": "Charming single-family rental on a quiet South Miami street, close to parks."
+  }
+]

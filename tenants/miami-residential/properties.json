@@ -1,0 +1,48 @@
+[
+  {
+    "id": "MRG-A1", "title": "2-bed luxury condo, Brickell", "deal_type": "sale", "type": "condo",
+    "address": "1425 Brickell Ave, Brickell, Miami, FL 33131", "district": "Brickell, Miami",
+    "price": 890000, "currency": "USD", "rooms": 2, "bedrooms": 2, "bathrooms": 2, "area_sqft": 1250, "floor": 40,
+    "transit": "walk to Brickell City Centre & Metromover", "parking": "2 assigned spaces",
+    "amenities": ["bay view", "high floor", "spa", "pool", "concierge", "valet"], "hoa_monthly": 1250,
+    "description": "High-floor luxury condo on Brickell Avenue with sweeping bay views and five-star amenities."
+  },
+  {
+    "id": "MRG-A2", "title": "1-bed condo, Downtown Miami", "deal_type": "sale", "type": "condo",
+    "address": "200 Biscayne Blvd Way, Downtown, Miami, FL 33131", "district": "Downtown Miami",
+    "price": 470000, "currency": "USD", "rooms": 1, "bedrooms": 1, "bathrooms": 1, "area_sqft": 800, "floor": 25,
+    "transit": "walk to Bayside & Metromover", "parking": "1 space",
+    "amenities": ["city & bay view", "pool", "gym", "24/7 security"], "hoa_monthly": 690,
+    "description": "Modern one-bedroom in the heart of Downtown with bay views, steps from Bayside."
+  },
+  {
+    "id": "MRG-A3", "title": "3-bed condo for rent, Brickell", "deal_type": "rent", "type": "condo",
+    "address": "801 S Miami Ave, Brickell, Miami, FL 33130", "district": "Brickell, Miami",
+    "price_per_month": 5200, "price": 5200, "currency": "USD", "rooms": 3, "bedrooms": 3, "bathrooms": 3, "area_sqft": 1550, "floor": 30,
+    "transit": "above Brickell City Centre", "parking": "2 spaces included",
+    "amenities": ["furnished", "bay view", "spa", "pool", "pet friendly"], "min_lease_months": 12,
+    "description": "Furnished 3-bedroom above Brickell City Centre — luxury living with shopping downstairs."
+  },
+  {
+    "id": "MRG-A4", "title": "Studio for rent, Brickell", "deal_type": "rent", "type": "studio",
+    "address": "45 SW 9th St, Brickell, Miami, FL 33130", "district": "Brickell, Miami",
+    "price_per_month": 2400, "price": 2400, "currency": "USD", "rooms": 1, "bedrooms": 0, "bathrooms": 1, "area_sqft": 520, "floor": 18,
+    "transit": "walk to everything in Brickell", "parking": "optional +$180/mo",
+    "amenities": ["city view", "pool", "gym", "fast internet"], "min_lease_months": 12,
+    "description": "Efficient Brickell studio, perfect for a young professional who wants to live car-free."
+  },
+  {
+    "id": "MRG-H1", "title": "4-bed penthouse, Brickell", "deal_type": "sale", "type": "condo",
+    "address": "1300 Brickell Bay Dr, Brickell, Miami, FL 33131", "district": "Brickell, Miami",
+    "price": 2650000, "currency": "USD", "rooms": 4, "bedrooms": 4, "bathrooms": 4, "area_sqft": 3000, "floor": 55,
+    "parking": "3 assigned spaces", "amenities": ["penthouse", "private terrace", "panoramic bay view", "private elevator"], "hoa_monthly": 2200,
+    "description": "Penthouse on the 55th floor with a private terrace and panoramic views of Biscayne Bay."
+  },
+  {
+    "id": "MRG-H2", "title": "5-bed waterfront house, Coconut Grove", "deal_type": "sale", "type": "house",
+    "address": "3500 Main Hwy, Coconut Grove, Miami, FL 33133", "district": "Coconut Grove, Miami",
+    "price": 3200000, "currency": "USD", "rooms": 5, "bedrooms": 5, "bathrooms": 5, "area_sqft": 4200, "lot_sqft": 16000, "year_built": 2017,
+    "parking": "3-car garage", "amenities": ["private dock", "infinity pool", "waterfront", "smart home", "gym"],
+    "description": "Luxury waterfront estate in leafy Coconut Grove with a private dock and infinity pool."
+  }
+]

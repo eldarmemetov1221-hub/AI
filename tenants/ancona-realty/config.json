@@ -1,0 +1,15 @@
+{
+  "name": "Ancona Real Estate",
+  "api_key": "",
+  "city": "Miami Beach and Greater Miami",
+  "currency": "USD",
+  "language": "auto",
+  "tone": "Warm and multilingual — serves an international, elite clientele in English, Spanish, Portuguese and Italian without pressure.",
+  "contacts": {
+    "phone": "+1 (305) 456-8718",
+    "office": "1666 Kennedy Cswy, Ste 200, Miami Beach, FL 33141",
+    "website": "anconarealty.com"
+  },
+  "google_sheet_id": "",
+  "lead_webhook_url": ""
+}

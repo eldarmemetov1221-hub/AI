@@ -1,0 +1,15 @@
+{
+  "name": "Miami Residential Group",
+  "api_key": "",
+  "city": "Brickell, Downtown and luxury Miami",
+  "currency": "USD",
+  "language": "auto",
+  "tone": "Polished and knowledgeable — specialists in luxury condos and new developments.",
+  "contacts": {
+    "phone": "+1 (305) 647-2663",
+    "office": "777 Brickell Ave, Ste 500, Miami, FL 33131",
+    "website": "miamiresidential.com"
+  },
+  "google_sheet_id": "",
+  "lead_webhook_url": ""
+}
