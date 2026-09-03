@@ -1,0 +1,119 @@
+[
+  {
+    "id": "NBL-A1",
+    "title": "2-bed condo, Old Town Scottsdale",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Old Town, Scottsdale",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1100,
+    "amenities": [
+      "walk to nightlife",
+      "pool",
+      "gym"
+    ],
+    "description": "Condo in vibrant Old Town Scottsdale near dining and galleries.",
+    "price": 520000
+  },
+  {
+    "id": "NBL-A2",
+    "title": "1-bed condo, Scottsdale Waterfront",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Scottsdale Waterfront",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "area_sqft": 780,
+    "amenities": [
+      "canal view",
+      "pool",
+      "concierge"
+    ],
+    "description": "Stylish one-bedroom on the Scottsdale Waterfront.",
+    "price": 430000
+  },
+  {
+    "id": "NBL-A3",
+    "title": "2-bed for rent, McCormick Ranch",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "McCormick Ranch, Scottsdale",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1000,
+    "amenities": [
+      "lakes & trails",
+      "pool",
+      "furnished option"
+    ],
+    "description": "Rental in scenic McCormick Ranch with lakes and golf.",
+    "price_per_month": 2400,
+    "price": 2400
+  },
+  {
+    "id": "NBL-H1",
+    "title": "4-bed house with pool, DC Ranch",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "DC Ranch, Scottsdale",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "area_sqft": 3200,
+    "amenities": [
+      "private pool",
+      "mountain view",
+      "gated",
+      "3-car garage"
+    ],
+    "description": "Luxury home in guard-gated DC Ranch with mountain views.",
+    "price": 1650000
+  },
+  {
+    "id": "NBL-H2",
+    "title": "3-bed house, Gainey Ranch",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Gainey Ranch, Scottsdale",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "area_sqft": 2200,
+    "amenities": [
+      "golf community",
+      "pool",
+      "gated"
+    ],
+    "description": "Home in the prestigious Gainey Ranch golf community.",
+    "price": 980000
+  },
+  {
+    "id": "NBL-H3",
+    "title": "4-bed house for rent, North Scottsdale",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "North Scottsdale",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2800,
+    "amenities": [
+      "private pool",
+      "mountain view",
+      "furnished option"
+    ],
+    "description": "Upscale rental in North Scottsdale with a pool and desert views.",
+    "price_per_month": 4800,
+    "price": 4800
+  }
+]

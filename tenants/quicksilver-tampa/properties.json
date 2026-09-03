@@ -1,0 +1,118 @@
+[
+  {
+    "id": "QSV-A1",
+    "title": "2-bed condo, Downtown Tampa",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Downtown, Tampa",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1000,
+    "amenities": [
+      "river view",
+      "pool",
+      "gym"
+    ],
+    "description": "Downtown condo on the Tampa Riverwalk near museums and dining.",
+    "price": 440000
+  },
+  {
+    "id": "QSV-A2",
+    "title": "1-bed condo, Harbour Island",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Harbour Island, Tampa",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "area_sqft": 760,
+    "amenities": [
+      "gated island",
+      "water view",
+      "pool"
+    ],
+    "description": "One-bedroom on exclusive Harbour Island, minutes from downtown.",
+    "price": 395000
+  },
+  {
+    "id": "QSV-A3",
+    "title": "2-bed for rent, Ybor City",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "Ybor City, Tampa",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 950,
+    "amenities": [
+      "historic district",
+      "pet friendly",
+      "balcony"
+    ],
+    "description": "Rental in historic Ybor City, full of nightlife and character.",
+    "price_per_month": 2100,
+    "price": 2100
+  },
+  {
+    "id": "QSV-H1",
+    "title": "4-bed house, Carrollwood",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Carrollwood, Tampa",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2400,
+    "amenities": [
+      "lake access",
+      "community pool",
+      "garage"
+    ],
+    "description": "Family home in established, amenity-rich Carrollwood.",
+    "price": 620000
+  },
+  {
+    "id": "QSV-H2",
+    "title": "3-bed house, Brandon",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Brandon, Tampa",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1700,
+    "amenities": [
+      "big yard",
+      "updated",
+      "near shops"
+    ],
+    "description": "Affordable family home in convenient Brandon.",
+    "price": 420000
+  },
+  {
+    "id": "QSV-H3",
+    "title": "4-bed house for rent, New Tampa",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "New Tampa",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2500,
+    "amenities": [
+      "gated",
+      "community pool",
+      "2-car garage"
+    ],
+    "description": "Large rental in a gated New Tampa community with amenities.",
+    "price_per_month": 3100,
+    "price": 3100
+  }
+]

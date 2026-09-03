@@ -1,0 +1,118 @@
+[
+  {
+    "id": "ONW-A1",
+    "title": "2-bed condo, Midtown",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Midtown, Nashville",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1050,
+    "amenities": [
+      "near Vanderbilt",
+      "pool",
+      "gym"
+    ],
+    "description": "Midtown condo near Vanderbilt, Music Row and hospitals.",
+    "price": 520000
+  },
+  {
+    "id": "ONW-A2",
+    "title": "Studio for rent, The Gulch",
+    "deal_type": "rent",
+    "type": "studio",
+    "district": "The Gulch, Nashville",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "area_sqft": 520,
+    "amenities": [
+      "walkable",
+      "rooftop deck",
+      "gym"
+    ],
+    "description": "Compact studio in the walkable Gulch district.",
+    "price_per_month": 1700,
+    "price": 1700
+  },
+  {
+    "id": "ONW-A3",
+    "title": "3-bed condo, SoBro",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "SoBro, Nashville",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1450,
+    "amenities": [
+      "near stadium",
+      "city view",
+      "concierge"
+    ],
+    "description": "Spacious condo in South of Broadway near the riverfront.",
+    "price": 690000
+  },
+  {
+    "id": "ONW-H1",
+    "title": "4-bed house, Sylvan Park",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Sylvan Park, Nashville",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2300,
+    "amenities": [
+      "walk to park",
+      "updated",
+      "garage"
+    ],
+    "description": "Family home in leafy, close-knit Sylvan Park.",
+    "price": 890000
+  },
+  {
+    "id": "ONW-H2",
+    "title": "3-bed house, Donelson",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Donelson, Nashville",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1700,
+    "amenities": [
+      "big yard",
+      "near airport",
+      "updated"
+    ],
+    "description": "Affordable family home in convenient Donelson.",
+    "price": 560000
+  },
+  {
+    "id": "ONW-H3",
+    "title": "4-bed house for rent, Brentwood",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "Brentwood, Nashville",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2600,
+    "amenities": [
+      "top schools",
+      "fenced yard",
+      "3-car garage"
+    ],
+    "description": "Large rental in sought-after Brentwood, great for families.",
+    "price_per_month": 4200,
+    "price": 4200
+  }
+]

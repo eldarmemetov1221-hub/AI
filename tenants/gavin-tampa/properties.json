@@ -1,0 +1,119 @@
+[
+  {
+    "id": "GAV-A1",
+    "title": "2-bed condo, Channelside",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Channelside, Tampa",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1050,
+    "amenities": [
+      "water view",
+      "pool",
+      "gym",
+      "near Sparkman Wharf"
+    ],
+    "description": "Downtown Tampa condo near Sparkman Wharf and the Riverwalk.",
+    "price": 470000
+  },
+  {
+    "id": "GAV-A2",
+    "title": "1-bed condo, Hyde Park",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Hyde Park, Tampa",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "area_sqft": 720,
+    "amenities": [
+      "walk to SoHo",
+      "historic",
+      "renovated"
+    ],
+    "description": "Charming one-bedroom in walkable, historic Hyde Park.",
+    "price": 360000
+  },
+  {
+    "id": "GAV-A3",
+    "title": "2-bed for rent, Westshore",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "Westshore, Tampa",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1000,
+    "amenities": [
+      "furnished option",
+      "pool",
+      "near airport"
+    ],
+    "description": "Convenient rental in the Westshore business district.",
+    "price_per_month": 2300,
+    "price": 2300
+  },
+  {
+    "id": "GAV-H1",
+    "title": "4-bed house with pool, South Tampa",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "South Tampa",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2500,
+    "amenities": [
+      "private pool",
+      "top schools",
+      "2-car garage"
+    ],
+    "description": "South Tampa family home with a pool in an A-rated school zone.",
+    "price": 850000
+  },
+  {
+    "id": "GAV-H2",
+    "title": "3-bed house, Seminole Heights",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Seminole Heights, Tampa",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1600,
+    "amenities": [
+      "bungalow charm",
+      "front porch",
+      "yard"
+    ],
+    "description": "Craftsman bungalow in trendy, foodie Seminole Heights.",
+    "price": 480000
+  },
+  {
+    "id": "GAV-H3",
+    "title": "3-bed house for rent, Riverview",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "Riverview, Tampa",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1900,
+    "amenities": [
+      "fenced yard",
+      "pet friendly",
+      "garage"
+    ],
+    "description": "Spacious suburban rental in family-friendly Riverview.",
+    "price_per_month": 2900,
+    "price": 2900
+  }
+]

@@ -1,0 +1,118 @@
+[
+  {
+    "id": "MWN-A1",
+    "title": "2-bed condo, The Gulch",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "The Gulch, Nashville",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1080,
+    "amenities": [
+      "walk to restaurants",
+      "rooftop pool",
+      "gym"
+    ],
+    "description": "Condo in The Gulch, Nashville's most walkable neighborhood.",
+    "price": 560000
+  },
+  {
+    "id": "MWN-A2",
+    "title": "1-bed condo, Downtown",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Downtown, Nashville",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "area_sqft": 740,
+    "amenities": [
+      "near Broadway",
+      "city view",
+      "concierge"
+    ],
+    "description": "One-bedroom steps from Broadway's live music scene.",
+    "price": 395000
+  },
+  {
+    "id": "MWN-A3",
+    "title": "2-bed for rent, East Nashville",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "East Nashville",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1000,
+    "amenities": [
+      "furnished option",
+      "pet friendly",
+      "porch"
+    ],
+    "description": "Rental in hip East Nashville, close to cafes and music venues.",
+    "price_per_month": 2200,
+    "price": 2200
+  },
+  {
+    "id": "MWN-H1",
+    "title": "4-bed house, 12 South",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "12 South, Nashville",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2600,
+    "amenities": [
+      "walk to 12 South",
+      "updated",
+      "garage"
+    ],
+    "description": "Family home in the beloved, walkable 12 South neighborhood.",
+    "price": 1150000
+  },
+  {
+    "id": "MWN-H2",
+    "title": "3-bed house, Germantown",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Germantown, Nashville",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1900,
+    "amenities": [
+      "historic charm",
+      "near restaurants",
+      "yard"
+    ],
+    "description": "Restored home in historic, foodie-favorite Germantown.",
+    "price": 820000
+  },
+  {
+    "id": "MWN-H3",
+    "title": "3-bed house for rent, Franklin",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "Franklin, Nashville",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 2100,
+    "amenities": [
+      "top schools",
+      "fenced yard",
+      "2-car garage"
+    ],
+    "description": "Family rental in charming Franklin with excellent schools.",
+    "price_per_month": 3400,
+    "price": 3400
+  }
+]

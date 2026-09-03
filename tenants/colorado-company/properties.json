@@ -1,0 +1,118 @@
+[
+  {
+    "id": "COL-A1",
+    "title": "2-bed condo, LoDo",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "LoDo (Lower Downtown), Denver",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1050,
+    "amenities": [
+      "Union Station nearby",
+      "gym",
+      "balcony"
+    ],
+    "description": "Downtown Denver condo near Union Station, Coors Field and dining.",
+    "price": 575000
+  },
+  {
+    "id": "COL-A2",
+    "title": "1-bed condo, Capitol Hill",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Capitol Hill, Denver",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "area_sqft": 720,
+    "amenities": [
+      "historic building",
+      "walk to parks",
+      "renovated"
+    ],
+    "description": "Character-filled one-bedroom in walkable Capitol Hill.",
+    "price": 360000
+  },
+  {
+    "id": "COL-A3",
+    "title": "2-bed apartment for rent, RiNo",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "RiNo (River North), Denver",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 980,
+    "amenities": [
+      "furnished option",
+      "rooftop deck",
+      "pet friendly"
+    ],
+    "description": "Modern rental in the artsy RiNo district full of murals and breweries.",
+    "price_per_month": 2500,
+    "price": 2500
+  },
+  {
+    "id": "COL-H1",
+    "title": "4-bed house, Washington Park",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Washington Park, Denver",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2600,
+    "amenities": [
+      "near Wash Park",
+      "updated kitchen",
+      "garage"
+    ],
+    "description": "Classic Denver home steps from beautiful Washington Park.",
+    "price": 1250000
+  },
+  {
+    "id": "COL-H2",
+    "title": "3-bed house, Highlands",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Highlands, Denver",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1900,
+    "amenities": [
+      "rooftop deck",
+      "walk to shops",
+      "modern"
+    ],
+    "description": "Contemporary home in the trendy Highlands neighborhood.",
+    "price": 890000
+  },
+  {
+    "id": "COL-H3",
+    "title": "3-bed house for rent, Cherry Creek",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "Cherry Creek, Denver",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 2000,
+    "amenities": [
+      "top schools",
+      "fenced yard",
+      "2-car garage"
+    ],
+    "description": "Elegant rental near Cherry Creek shopping and top schools.",
+    "price_per_month": 4500,
+    "price": 4500
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "name": "Corcoran Perry & Co.",
+  "api_key": "",
+  "city": "Denver, Colorado",
+  "currency": "USD",
+  "language": "auto",
+  "tone": "Friendly, professional and helpful — a trusted local expert who never pressures.",
+  "contacts": {
+    "website": "corcoranperry.com"
+  },
+  "google_sheet_id": "",
+  "lead_webhook_url": ""
+}

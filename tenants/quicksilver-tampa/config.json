@@ -1,0 +1,13 @@
+{
+  "name": "Quicksilver Real Estate",
+  "api_key": "",
+  "city": "Tampa, Florida",
+  "currency": "USD",
+  "language": "auto",
+  "tone": "Friendly, professional and helpful — a trusted local expert who never pressures.",
+  "contacts": {
+    "website": "quicksilverrealestate.com"
+  },
+  "google_sheet_id": "",
+  "lead_webhook_url": ""
+}

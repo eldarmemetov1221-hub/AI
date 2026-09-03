@@ -1,0 +1,119 @@
+[
+  {
+    "id": "BTQ-A1",
+    "title": "2-bed condo, Downtown Austin",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Downtown, Austin",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1100,
+    "amenities": [
+      "skyline view",
+      "pool",
+      "gym",
+      "walk to 6th St"
+    ],
+    "description": "Modern downtown condo steps from 2nd Street District and the lake trail.",
+    "price": 560000
+  },
+  {
+    "id": "BTQ-A2",
+    "title": "1-bed condo, South Congress",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "South Congress (SoCo), Austin",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "area_sqft": 760,
+    "amenities": [
+      "walk to SoCo shops",
+      "rooftop deck",
+      "renovated"
+    ],
+    "description": "Stylish one-bedroom in the heart of vibrant South Congress.",
+    "price": 425000
+  },
+  {
+    "id": "BTQ-A3",
+    "title": "2-bed loft for rent, East Austin",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "East Austin",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1000,
+    "amenities": [
+      "furnished option",
+      "pet friendly",
+      "balcony"
+    ],
+    "description": "Cool East Austin loft near restaurants, bars and coffee shops.",
+    "price_per_month": 2600,
+    "price": 2600
+  },
+  {
+    "id": "BTQ-H1",
+    "title": "4-bed house with pool, Zilker",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Zilker, Austin",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2600,
+    "amenities": [
+      "private pool",
+      "near Barton Springs",
+      "updated kitchen"
+    ],
+    "description": "Family home minutes from Zilker Park and Barton Springs.",
+    "price": 1450000
+  },
+  {
+    "id": "BTQ-H2",
+    "title": "3-bed house, Mueller",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Mueller, Austin",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1900,
+    "amenities": [
+      "solar panels",
+      "park nearby",
+      "garage"
+    ],
+    "description": "Energy-efficient home in the popular Mueller community.",
+    "price": 780000
+  },
+  {
+    "id": "BTQ-H3",
+    "title": "3-bed house for rent, Westlake",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "Westlake, Austin",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 2100,
+    "amenities": [
+      "top schools",
+      "fenced yard",
+      "2-car garage"
+    ],
+    "description": "Spacious rental in top-rated Westlake school district.",
+    "price_per_month": 4200,
+    "price": 4200
+  }
+]

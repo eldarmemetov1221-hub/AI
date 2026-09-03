@@ -1,0 +1,13 @@
+{
+  "name": "Onward Real Estate",
+  "api_key": "",
+  "city": "Middle Tennessee (Nashville)",
+  "currency": "USD",
+  "language": "auto",
+  "tone": "Friendly, professional and helpful — a trusted local expert who never pressures.",
+  "contacts": {
+    "website": "onwardre.com"
+  },
+  "google_sheet_id": "",
+  "lead_webhook_url": ""
+}

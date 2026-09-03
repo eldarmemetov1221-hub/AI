@@ -1,0 +1,14 @@
+{
+  "name": "Give Realty",
+  "api_key": "",
+  "city": "Austin, Texas",
+  "currency": "USD",
+  "language": "auto",
+  "tone": "Friendly, professional and helpful — a trusted local expert who never pressures.",
+  "contacts": {
+    "website": "giverealty.com",
+    "phone": "+1 (512) 338-4483"
+  },
+  "google_sheet_id": "",
+  "lead_webhook_url": ""
+}

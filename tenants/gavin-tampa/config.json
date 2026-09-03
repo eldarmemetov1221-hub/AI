@@ -1,0 +1,14 @@
+{
+  "name": "Gavin Realty",
+  "api_key": "",
+  "city": "Tampa Bay, Florida",
+  "currency": "USD",
+  "language": "auto",
+  "tone": "Friendly, professional and helpful — a trusted local expert who never pressures.",
+  "contacts": {
+    "website": "gavinsells.com",
+    "phone": "+1 (813) 513-2501"
+  },
+  "google_sheet_id": "",
+  "lead_webhook_url": ""
+}

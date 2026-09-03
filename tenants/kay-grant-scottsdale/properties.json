@@ -1,0 +1,119 @@
+[
+  {
+    "id": "KAY-A1",
+    "title": "2-bed condo, Old Town",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Old Town, Scottsdale",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1080,
+    "amenities": [
+      "walk to Fashion Square",
+      "pool",
+      "gym"
+    ],
+    "description": "Condo steps from Scottsdale Fashion Square and Old Town.",
+    "price": 540000
+  },
+  {
+    "id": "KAY-A2",
+    "title": "1-bed condo, Optima",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Central Scottsdale",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "area_sqft": 760,
+    "amenities": [
+      "vertical garden",
+      "spa",
+      "gym"
+    ],
+    "description": "Resort-style one-bedroom in a landmark Scottsdale building.",
+    "price": 410000
+  },
+  {
+    "id": "KAY-A3",
+    "title": "3-bed for rent, Kierland",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "Kierland, Scottsdale",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1400,
+    "amenities": [
+      "walk to Kierland Commons",
+      "pool",
+      "furnished option"
+    ],
+    "description": "Rental near Kierland Commons shopping and dining.",
+    "price_per_month": 2900,
+    "price": 2900
+  },
+  {
+    "id": "KAY-H1",
+    "title": "5-bed house with pool, Silverleaf",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Silverleaf, Scottsdale",
+    "currency": "USD",
+    "rooms": 5,
+    "bedrooms": 5,
+    "bathrooms": 5,
+    "area_sqft": 4200,
+    "amenities": [
+      "private pool",
+      "mountain view",
+      "gated",
+      "4-car garage"
+    ],
+    "description": "Luxury estate in exclusive, guard-gated Silverleaf.",
+    "price": 2850000
+  },
+  {
+    "id": "KAY-H2",
+    "title": "4-bed house, Grayhawk",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Grayhawk, Scottsdale",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2900,
+    "amenities": [
+      "golf community",
+      "pool",
+      "mountain view"
+    ],
+    "description": "Family home in the popular Grayhawk golf community.",
+    "price": 1250000
+  },
+  {
+    "id": "KAY-H3",
+    "title": "3-bed house for rent, Paradise Valley",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "Paradise Valley, Scottsdale",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "area_sqft": 2600,
+    "amenities": [
+      "private pool",
+      "mountain view",
+      "gated"
+    ],
+    "description": "Elegant rental near Paradise Valley with resort-style living.",
+    "price_per_month": 5500,
+    "price": 5500
+  }
+]

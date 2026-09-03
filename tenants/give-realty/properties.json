@@ -1,0 +1,118 @@
+[
+  {
+    "id": "GIV-A1",
+    "title": "2-bed condo, The Domain",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "North Austin (The Domain)",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1050,
+    "amenities": [
+      "walk to shops",
+      "pool",
+      "gym"
+    ],
+    "description": "Condo at The Domain, Austin's second downtown, with shopping at your door.",
+    "price": 480000
+  },
+  {
+    "id": "GIV-A2",
+    "title": "Studio for rent, Downtown",
+    "deal_type": "rent",
+    "type": "studio",
+    "district": "Downtown, Austin",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "area_sqft": 520,
+    "amenities": [
+      "city view",
+      "gym",
+      "fast internet"
+    ],
+    "description": "Efficient downtown studio, perfect for car-free living.",
+    "price_per_month": 1800,
+    "price": 1800
+  },
+  {
+    "id": "GIV-A3",
+    "title": "3-bed condo, Rainey Street",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Rainey Street, Austin",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1500,
+    "amenities": [
+      "lake view",
+      "rooftop pool",
+      "concierge"
+    ],
+    "description": "High-rise living near the lake and the Rainey Street district.",
+    "price": 720000
+  },
+  {
+    "id": "GIV-H1",
+    "title": "4-bed house, Circle C",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Circle C Ranch, Austin",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2400,
+    "amenities": [
+      "community pool",
+      "great schools",
+      "garage"
+    ],
+    "description": "Family home in the amenity-rich Circle C Ranch neighborhood.",
+    "price": 690000
+  },
+  {
+    "id": "GIV-H2",
+    "title": "3-bed house with yard, South Austin",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "South Austin",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1700,
+    "amenities": [
+      "big backyard",
+      "updated",
+      "pet friendly"
+    ],
+    "description": "Charming South Austin home with a large yard, close to everything.",
+    "price": 560000
+  },
+  {
+    "id": "GIV-H3",
+    "title": "4-bed house for rent, Pflugerville",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "Pflugerville, Austin",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2300,
+    "amenities": [
+      "furnished option",
+      "garage",
+      "family friendly"
+    ],
+    "description": "Roomy family rental just north of Austin with easy commute.",
+    "price_per_month": 3200,
+    "price": 3200
+  }
+]

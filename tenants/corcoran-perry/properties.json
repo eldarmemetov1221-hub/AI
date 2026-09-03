@@ -1,0 +1,118 @@
+[
+  {
+    "id": "CPC-A1",
+    "title": "2-bed condo, Cherry Creek",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Cherry Creek, Denver",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "area_sqft": 1150,
+    "amenities": [
+      "walk to shops",
+      "pool",
+      "concierge"
+    ],
+    "description": "Upscale condo near Cherry Creek North's shops and restaurants.",
+    "price": 690000
+  },
+  {
+    "id": "CPC-A2",
+    "title": "1-bed loft, Ballpark",
+    "deal_type": "sale",
+    "type": "condo",
+    "district": "Ballpark, Denver",
+    "currency": "USD",
+    "rooms": 1,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "area_sqft": 800,
+    "amenities": [
+      "exposed brick",
+      "near Coors Field",
+      "gym"
+    ],
+    "description": "Industrial-chic loft near Coors Field and downtown.",
+    "price": 395000
+  },
+  {
+    "id": "CPC-A3",
+    "title": "2-bed for rent, Wash Park",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "Washington Park, Denver",
+    "currency": "USD",
+    "rooms": 2,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "area_sqft": 900,
+    "amenities": [
+      "near park",
+      "pet friendly",
+      "parking"
+    ],
+    "description": "Bright rental a short walk from Washington Park.",
+    "price_per_month": 2400,
+    "price": 2400
+  },
+  {
+    "id": "CPC-H1",
+    "title": "5-bed house, Hilltop",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Hilltop, Denver",
+    "currency": "USD",
+    "rooms": 5,
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "area_sqft": 3400,
+    "amenities": [
+      "large lot",
+      "updated",
+      "3-car garage"
+    ],
+    "description": "Spacious family estate in prestigious Hilltop.",
+    "price": 1650000
+  },
+  {
+    "id": "CPC-H2",
+    "title": "3-bed bungalow, Berkeley",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Berkeley, Denver",
+    "currency": "USD",
+    "rooms": 3,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area_sqft": 1700,
+    "amenities": [
+      "front porch",
+      "walk to Tennyson St",
+      "yard"
+    ],
+    "description": "Charming bungalow near the shops and eateries of Tennyson Street.",
+    "price": 760000
+  },
+  {
+    "id": "CPC-H3",
+    "title": "4-bed house for rent, Stapleton",
+    "deal_type": "rent",
+    "type": "house",
+    "district": "Central Park (Stapleton), Denver",
+    "currency": "USD",
+    "rooms": 4,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "area_sqft": 2400,
+    "amenities": [
+      "community pools",
+      "parks",
+      "garage"
+    ],
+    "description": "Family rental in the park-filled Central Park community.",
+    "price_per_month": 3600,
+    "price": 3600
+  }
+]
