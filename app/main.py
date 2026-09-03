@@ -114,13 +114,13 @@ def demo(tenant: str = "demo"):
    <span class="tag">AI Assistant demo</span>
    <h1>{name}</h1>
    <p>{('Serving ' + city + '. ') if city else ''}Click the chat button in the bottom-right corner and ask about a
-   property — your AI assistant answers instantly, 24/7, and <strong>automatically speaks your visitor's language</strong>
-   (English, Spanish, Portuguese, Russian and more). It matches homes to each buyer's budget and books viewings automatically.</p>
+   property — your AI assistant answers instantly, 24/7, and <strong>automatically speaks your visitor's language, whatever it is</strong>.
+   It matches homes to each buyer's budget and books viewings automatically.</p>
    <div class="card">
      <strong>What it does for you</strong>
      <ul style="margin:12px 0 0;padding-left:20px;line-height:1.9;color:#374151">
        <li>Replies to every website visitor in seconds — even at night</li>
-       <li>Understands English, Spanish and Portuguese automatically</li>
+       <li>Understands and replies in any language, automatically</li>
        <li>Recommends the right listings within the client's budget</li>
        <li>Captures the lead (name, phone, viewing time) straight to your sheet</li>
      </ul>
