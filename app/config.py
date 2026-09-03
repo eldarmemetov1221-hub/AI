@@ -23,7 +23,7 @@ load_dotenv()
 # --- Настройки ИИ (OpenRouter по умолчанию; можно указать OpenAI) ---
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://openrouter.ai/api/v1")
 LLM_API_KEY = os.getenv("LLM_API_KEY", "")
-MODEL_ID = os.getenv("MODEL_ID", "meta-llama/llama-3.3-70b-instruct:free")
+MODEL_ID = os.getenv("MODEL_ID", "deepseek/deepseek-chat-v3-0324:free")
 # Необязательные заголовки для рейтинга приложения в OpenRouter
 APP_URL = os.getenv("APP_URL", "")
 APP_NAME = os.getenv("APP_NAME", "Real Estate AI Agent")

@@ -1,26 +1,31 @@
 """ИИ-агент-риелтор поверх OpenRouter (OpenAI-совместимый API).
 
-Работает с бесплатными/платными моделями OpenRouter, а также с OpenAI/ChatGPT —
-провайдер задаётся в config (LLM_BASE_URL, LLM_API_KEY, MODEL_ID).
+Работает с ЛЮБОЙ чат-моделью (включая бесплатные модели OpenRouter), потому что
+не полагается на «инструменты»/function-calling — многие бесплатные модели их не
+поддерживают. Вместо этого:
 
-Ведёт диалог, объясняет и советует, подбирает объекты под бюджет
-(инструмент search_properties), а когда клиент готов на просмотр — собирает
-контакты и сохраняет лид (инструмент save_lead).
+  * вся база объектов компании вшивается прямо в системный промпт, и агент
+    рекомендует только из неё;
+  * лид (контакты клиента) агент отдаёт в конце спец-меткой [[LEAD]]{...}[[/LEAD]],
+    которую мы вырезаем из ответа и сохраняем (Google Sheets / вебхук / файл).
 
-Работает на рынки Европы и США: у каждой компании свой город и валюта — агент
-подстраивается под них через системный промпт и базу объектов тенанта.
+Провайдер и модель задаются в config (LLM_BASE_URL, LLM_API_KEY, MODEL_ID).
+Тот же код работает с OpenAI/ChatGPT — меняются только адрес и ключ.
 
-История диалога хранится в памяти по session_id. Для нескольких воркеров
-подключите общее хранилище (Redis и т.п.) вместо словаря MEMORY.
+Рынки Европы и США: у каждой компании свой город и валюта — агент подстраивается
+через системный промпт и базу объектов тенанта.
+
+История диалога хранится в памяти по session_id.
 """
 from __future__ import annotations
 
 import json
+import re
 from typing import Any
 
 from openai import OpenAI
 
-from . import config, leads, properties
+from . import config, leads
 from .config import Tenant
 
 _extra_headers = {}
@@ -38,70 +43,10 @@ client = OpenAI(
 # session_id -> список сообщений в формате OpenAI chat
 MEMORY: dict[str, list[dict[str, Any]]] = {}
 
-MAX_TOOL_ITERATIONS = 6  # защита от зацикливания
+# Сколько объектов максимум вшивать в промпт (для больших баз — ограничение).
+MAX_LISTINGS_IN_PROMPT = 60
 
-
-TOOLS = [
-    {
-        "type": "function",
-        "function": {
-            "name": "search_properties",
-            "description": (
-                "Find real estate listings from the company's database by the client's "
-                "criteria. Use it as soon as you know the budget and rough preferences. "
-                "Returns matching listings. Never invent listings — only show what this "
-                "tool returns."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "deal_type": {
-                        "type": "string",
-                        "enum": ["sale", "rent"],
-                        "description": "Deal type: sale or rent.",
-                    },
-                    "property_type": {
-                        "type": "string",
-                        "description": "Property type, e.g. apartment, house, studio, condo, commercial.",
-                    },
-                    "district": {"type": "string", "description": "Neighborhood, district or city."},
-                    "min_price": {"type": "number", "description": "Minimum price."},
-                    "max_price": {"type": "number", "description": "Maximum price (client's budget)."},
-                    "min_rooms": {"type": "integer", "description": "Minimum number of rooms/bedrooms."},
-                    "max_rooms": {"type": "integer", "description": "Maximum number of rooms/bedrooms."},
-                    "min_area": {"type": "number", "description": "Minimum area."},
-                },
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "save_lead",
-            "description": (
-                "Save the client's contact details at the end of the conversation, when "
-                "they agree to a viewing or ask to be called back. Call ONLY when you have "
-                "at least a name and a phone number that the client provided themselves."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "name": {"type": "string", "description": "Client's name."},
-                    "phone": {"type": "string", "description": "Client's phone number."},
-                    "viewing_datetime": {
-                        "type": "string",
-                        "description": "When the client wants to view the property (as they said).",
-                    },
-                    "property_id": {"type": "string", "description": "ID of the listing from the database."},
-                    "property_title": {"type": "string", "description": "Listing title/address."},
-                    "budget": {"type": "string", "description": "Client's budget."},
-                    "notes": {"type": "string", "description": "Short summary of client's preferences."},
-                },
-                "required": ["name", "phone"],
-            },
-        },
-    },
-]
+_LEAD_RE = re.compile(r"\[\[LEAD\]\](.*?)\[\[/LEAD\]\]", re.DOTALL)
 
 
 def build_system_prompt(tenant: Tenant) -> str:
@@ -121,36 +66,65 @@ def build_system_prompt(tenant: Tenant) -> str:
     market = f"You operate in {tenant.city}. " if tenant.city else ""
     currency = f"Prices are in {tenant.currency}. " if tenant.currency else ""
 
+    listings = tenant.properties[:MAX_LISTINGS_IN_PROMPT]
+    listings_json = json.dumps(listings, ensure_ascii=False, indent=2)
+
     return f"""You are an AI real estate agent for "{tenant.name}". You work 24/7 and talk to clients instead of a human agent. {market}{currency}
 
 Your job:
 1. Greet warmly and find out the need: buy or rent, property type, area, budget, number of rooms, who it's for.
 2. Explain and advise honestly — what fits, what doesn't, and why; help them choose within budget.
-3. Find listings ONLY via the search_properties tool. Never invent prices, addresses or availability. If nothing matches, say so honestly and suggest adjusting the criteria.
+3. Recommend ONLY from the LISTINGS below. Never invent prices, addresses or availability. If nothing matches, say so honestly and suggest adjusting the criteria.
 4. Show the 2–4 best options briefly and clearly: price, area, rooms, size, key highlights.
-5. When the client is interested, offer to book a viewing. Collect name, phone and preferred date/time, and note which property. Then CALL save_lead. After it succeeds, confirm that a manager will get in touch.
+5. When the client is interested, offer to book a viewing. Collect their name, phone and preferred date/time, and note which property.
+
+LISTINGS (the company's current database — the only properties you may offer):
+{listings_json}
 
 Rules:
 - {lang}
 - Tone: {tone}
 - Keep replies short and to the point. Ask one or two questions at a time.
 - Never ask for or store extra personal data — only name, phone and viewing preferences.
-- Don't promise anything not in the database, and don't give exact legal/tax advice — refer those to a human manager.{contacts}
+- Don't promise anything not in the listings, and don't give exact legal/tax advice — refer those to a human manager.{contacts}
+
+CAPTURING THE LEAD (very important):
+When — and only when — the client has given you BOTH their name and phone number, end your reply with a single hidden line in EXACTLY this format (the client will not see it):
+[[LEAD]]{{"name":"...","phone":"...","viewing_datetime":"...","property_id":"...","property_title":"...","budget":"...","notes":"..."}}[[/LEAD]]
+Fill what you know, leave unknown fields as empty strings. Put it on its own line at the very end, after your normal message to the client. Do not mention this line or show JSON to the client. Do not output it until you actually have both name and phone.
 """
 
 
-def _run_tool(tenant: Tenant, session_id: str, name: str, args: dict) -> Any:
-    if name == "search_properties":
-        found = properties.search_properties(tenant.properties, **args)
-        if not found:
-            return {"count": 0, "properties": [], "message": "No listings match these criteria."}
-        return {"count": len(found), "currency": tenant.currency, "properties": found}
+def _extract_and_save_lead(tenant: Tenant, session_id: str, text: str) -> tuple[str, bool]:
+    """Ищет метку [[LEAD]]...[[/LEAD]] в ответе, сохраняет лид и убирает метку
+    из текста, который увидит клиент. Возвращает (очищенный_текст, сохранён?)."""
+    match = _LEAD_RE.search(text)
+    if not match:
+        return text.strip(), False
 
-    if name == "save_lead":
-        result = leads.save_lead(tenant, session_id=session_id, **args)
-        return {"saved": True, "delivery": result["delivery"]}
+    saved = False
+    try:
+        data = json.loads(match.group(1).strip())
+        name = str(data.get("name", "")).strip()
+        phone = str(data.get("phone", "")).strip()
+        if name and phone:
+            leads.save_lead(
+                tenant,
+                session_id=session_id,
+                name=name,
+                phone=phone,
+                viewing_datetime=str(data.get("viewing_datetime", "")),
+                property_id=str(data.get("property_id", "")),
+                property_title=str(data.get("property_title", "")),
+                budget=str(data.get("budget", "")),
+                notes=str(data.get("notes", "")),
+            )
+            saved = True
+    except (json.JSONDecodeError, TypeError):
+        pass
 
-    return {"error": f"Unknown tool: {name}"}
+    cleaned = _LEAD_RE.sub("", text).strip()
+    return cleaned, saved
 
 
 def chat(tenant: Tenant, session_id: str, user_message: str) -> dict[str, Any]:
@@ -160,61 +134,20 @@ def chat(tenant: Tenant, session_id: str, user_message: str) -> dict[str, Any]:
     """
     history = MEMORY.get(session_id)
     if history is None:
-        # Системный промпт кладём один раз в начало истории диалога.
         history = [{"role": "system", "content": build_system_prompt(tenant)}]
         MEMORY[session_id] = history
 
     history.append({"role": "user", "content": user_message})
-    lead_saved = False
-    message = None
 
-    for _ in range(MAX_TOOL_ITERATIONS):
-        completion = client.chat.completions.create(
-            model=config.MODEL_ID,
-            messages=history,
-            tools=TOOLS,
-            max_tokens=1024,
-        )
-        message = completion.choices[0].message
+    completion = client.chat.completions.create(
+        model=config.MODEL_ID,
+        messages=history,
+        max_tokens=1024,
+    )
+    raw = completion.choices[0].message.content or ""
+    history.append({"role": "assistant", "content": raw})
 
-        tool_calls = message.tool_calls or []
-        # Сохраняем ход ассистента (с возможными вызовами инструментов).
-        history.append(
-            {
-                "role": "assistant",
-                "content": message.content or "",
-                "tool_calls": [
-                    {
-                        "id": tc.id,
-                        "type": "function",
-                        "function": {"name": tc.function.name, "arguments": tc.function.arguments},
-                    }
-                    for tc in tool_calls
-                ]
-                or None,
-            }
-        )
-
-        if not tool_calls:
-            break
-
-        for tc in tool_calls:
-            try:
-                args = json.loads(tc.function.arguments or "{}")
-            except json.JSONDecodeError:
-                args = {}
-            if tc.function.name == "save_lead":
-                lead_saved = True
-            output = _run_tool(tenant, session_id, tc.function.name, args)
-            history.append(
-                {
-                    "role": "tool",
-                    "tool_call_id": tc.id,
-                    "content": json.dumps(output, ensure_ascii=False),
-                }
-            )
-
-    reply = (message.content or "").strip() if message else ""
+    reply, lead_saved = _extract_and_save_lead(tenant, session_id, raw)
     if not reply:
         reply = "Sorry, could you say that again?"
 
