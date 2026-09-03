@@ -24,9 +24,7 @@ var HEADER = [
   'Объект',              // property_title
   'ID объекта',          // property_id
   'Бюджет',              // budget
-  'Пожелания',           // notes
-  'Компания',            // tenant_id
-  'Сессия'               // session_id
+  'Пожелания'            // notes
 ];
 
 function doPost(e) {
@@ -39,23 +37,25 @@ function doPost(e) {
       sheet.appendRow(HEADER);
     }
 
-    // Телефон — как ТЕКСТ (иначе "+..." Google принимает за формулу и пишет #ERROR).
-    sheet.getRange('C:C').setNumberFormat('@');
     // Колонка "Записано" — как дата/время.
     sheet.getRange('A:A').setNumberFormat('yyyy-mm-dd hh:mm');
 
     sheet.appendRow([
       new Date(),                    // Записано (текущие дата и время)
       data.name || '',
-      data.phone || '',              // пишется как текст благодаря формату колонки
+      '',                            // телефон впишем ниже как ТЕКСТ
       data.viewing_datetime || '',
       data.property_title || '',
       data.property_id || '',
       data.budget || '',
-      data.notes || '',
-      data.tenant_id || '',
-      data.session_id || ''
+      data.notes || ''
     ]);
+
+    // Телефон записываем отдельно как ТЕКСТ, иначе "+..." Google считает формулой (#ERROR).
+    var row = sheet.getLastRow();
+    var phoneCell = sheet.getRange(row, 3);
+    phoneCell.setNumberFormat('@');
+    phoneCell.setValue(data.phone || '');
 
     return ContentService
       .createTextOutput(JSON.stringify({ ok: true }))
