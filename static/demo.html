@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo Estate — ИИ-риелтор</title>
+  <style>
+    body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111;background:#f3f4f6}
+    .hero{max-width:760px;margin:0 auto;padding:80px 24px}
+    h1{font-size:34px;margin:0 0 12px}
+    p{font-size:17px;line-height:1.6;color:#374151}
+    .card{background:#fff;border-radius:16px;padding:24px;margin-top:24px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    code{background:#eef;padding:2px 6px;border-radius:5px;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Demo Estate</h1>
+    <p>Демо-страница компании недвижимости. В правом нижнем углу — ИИ-риелтор,
+       встроенный одной строкой <code>&lt;script&gt;</code>. Нажмите 💬 и напишите,
+       например: «ищу 2-комнатную до 45 млн в Медеуском».</p>
+    <div class="card">
+      <strong>Как встроить на свой сайт:</strong>
+      <pre><code>&lt;script src="/widget.js" data-tenant="demo" data-api=""&gt;&lt;/script&gt;</code></pre>
+    </div>
+  </div>
+
+  <!-- data-api пустой => тот же origin, что и страница -->
+  <script src="/widget.js" data-tenant="demo" data-api="" data-title="Demo Estate — риелтор"></script>
+</body>
+</html>

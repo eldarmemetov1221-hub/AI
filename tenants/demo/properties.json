@@ -1,0 +1,80 @@
+[
+  {
+    "id": "A-101",
+    "title": "2-комн. квартира, ЖК «Ривер»",
+    "deal_type": "sale",
+    "type": "apartment",
+    "district": "Алматы, Медеуский",
+    "price": 42000000,
+    "currency": "KZT",
+    "rooms": 2,
+    "area": 68,
+    "floor": 7,
+    "highlights": ["ремонт под ключ", "вид на горы", "паркинг", "рядом парк"]
+  },
+  {
+    "id": "A-102",
+    "title": "1-комн. студия у метро",
+    "deal_type": "sale",
+    "type": "studio",
+    "district": "Алматы, Бостандыкский",
+    "price": 24500000,
+    "currency": "KZT",
+    "rooms": 1,
+    "area": 38,
+    "floor": 3,
+    "highlights": ["5 мин до метро", "новый дом", "тёплые полы"]
+  },
+  {
+    "id": "A-103",
+    "title": "3-комн. квартира, семейная",
+    "deal_type": "sale",
+    "type": "apartment",
+    "district": "Алматы, Ауэзовский",
+    "price": 55000000,
+    "currency": "KZT",
+    "rooms": 3,
+    "area": 92,
+    "floor": 5,
+    "highlights": ["две лоджии", "школа и садик во дворе", "кладовая"]
+  },
+  {
+    "id": "H-201",
+    "title": "Дом 4 комнаты с участком",
+    "deal_type": "sale",
+    "type": "house",
+    "district": "Алматы, Наурызбайский",
+    "price": 78000000,
+    "currency": "KZT",
+    "rooms": 4,
+    "area": 160,
+    "land": 6,
+    "highlights": ["участок 6 соток", "гараж на 2 авто", "своя скважина"]
+  },
+  {
+    "id": "R-301",
+    "title": "2-комн. квартира в аренду",
+    "deal_type": "rent",
+    "type": "apartment",
+    "district": "Алматы, Бостандыкский",
+    "price": 320000,
+    "currency": "KZT",
+    "rooms": 2,
+    "area": 60,
+    "floor": 9,
+    "highlights": ["меблирована", "техника вся есть", "можно с животными"]
+  },
+  {
+    "id": "R-302",
+    "title": "Студия в аренду, центр",
+    "deal_type": "rent",
+    "type": "studio",
+    "district": "Алматы, Медеуский",
+    "price": 220000,
+    "currency": "KZT",
+    "rooms": 1,
+    "area": 35,
+    "floor": 4,
+    "highlights": ["центр города", "быстрый интернет", "консьерж"]
+  }
+]
